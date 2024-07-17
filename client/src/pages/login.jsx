@@ -31,8 +31,8 @@ const Login = () => {
       const result = await response.json();
       if (response.ok) {
         // Jika login berhasil, simpan token ke cookie dan atur waktu kedaluwarsa menjadi 2 menit
-        setCookie("TOKEN", result.token, { path: "/", expires: new Date(Date.now() + 120000) });
-        navigate("/homepage");
+        setCookie("TOKEN", result.token, { path: "/login", expires: new Date(Date.now() + 120000) });
+        navigate("/");
       } else {
         setError(result.msg);
       }

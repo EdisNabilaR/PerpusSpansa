@@ -19,6 +19,82 @@ app.get("/test", (req, res) => {
 });
 
 
+// app.get("/book",   async (req, res) => {
+//   const sql = "SELECT FROM * book";
+  
+//   db.query(sql, (err, res) => {
+//     if(err) return app.json("Error");
+//     return app.json(res);
+//   })
+// });
+
+app.get("/book", async (req, res) => {
+  try {
+    const DataBook = await db.query("SELECT * FROM book");
+    return res.status(200).json({
+      msg: "Data buku berhasil di GET",
+      data: DataBook,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      msg: "Data buku gagal di GET",
+      err: error,
+    });
+  }
+});
+
+app.post('/bookform', (req, res) => {
+  const sql = "INSERT INTO book (`judul`, `penerbit`, `kategori`) VALUES (?, ?, ?)";
+  const values = [
+    req.body.judul,
+    req.body.penerbit,
+    req.body.kategori
+  ];
+
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error inserting data', error: err });
+    }
+    return res.status(200).json({ message: 'Data inserted successfully', data: data });
+  });
+});
+
+
+app.put('/updatebook/:id', (req, res) => {
+  const { id } = req.params; // Mengambil ID dari parameter URL
+  const sql = "UPDATE book SET judul = ?, penerbit = ?, kategori = ? WHERE id = ?";
+  const values = [
+    req.body.judul,
+    req.body.penerbit,
+    req.body.kategori,
+    id 
+  ];
+
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error updating data', error: err });
+    }
+    return res.status(200).json({ message: 'Data updated successfully', data: data });
+  });
+});
+
+app.delete('/book/:id', (req, res) => {
+  const { id } = req.params; // Mengambil ID dari parameter URL
+  const sql = "DELETE FROM book WHERE id = ?";
+
+  db.query(sql, [id], (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error deleting data', error: err });
+    }
+    return res.status(200).json({ message: 'Data deleted successfully', data: data });
+  });
+});
+
+
+
 app.get("/users", async (req, res) => {
   try {
     const DataUser = await db.query("SELECT * FROM user");
