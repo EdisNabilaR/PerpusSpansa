@@ -19,20 +19,16 @@ app.get("/test", (req, res) => {
 });
 
 
-// app.get("/book",   async (req, res) => {
-//   const sql = "SELECT FROM * book";
-  
-//   db.query(sql, (err, res) => {
-//     if(err) return app.json("Error");
-//     return app.json(res);
-//   })
-// });
-
+// BUKU 
 app.get("/book", async (req, res) => {
   try {
     const DataBook = await db.query("SELECT * FROM book");
+    // Hitung total buku
+    const totalBuku = DataBook.length; 
+
     return res.status(200).json({
       msg: "Data buku berhasil di GET",
+      total: totalBuku, 
       data: DataBook,
     });
   } catch (error) {
@@ -42,6 +38,7 @@ app.get("/book", async (req, res) => {
     });
   }
 });
+
 
 app.post('/bookform', (req, res) => {
   const sql = "INSERT INTO book (`judul`, `penerbit`, `kategori`) VALUES (?, ?, ?)";
@@ -92,6 +89,80 @@ app.delete('/book/:id', (req, res) => {
     return res.status(200).json({ message: 'Data deleted successfully', data: data });
   });
 });
+
+
+// MEMBER
+app.get("/member", async (req, res) => {
+  try {
+    const Datamember = await db.query("SELECT * FROM member");
+   
+    const totalMember = Datamember.length; 
+
+    return res.status(200).json({
+      msg: "Data member berhasil di GET",
+      total: totalMember, 
+      data: Datamember,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      msg: "Data member gagal di GET",
+      err: error,
+    });
+  }
+});
+
+app.post("/formmember", async (req, res) => {
+  const sql = "INSERT INTO member (`nis`, `nama`, `nomortelepon`, `alamat`) VALUES (?, ?, ?, ?)";
+  const { nis, nama, nomortelepon, alamat } = req.body;
+  const values = [
+    nis,
+    nama,
+    nomortelepon,
+    alamat
+  ];
+
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error inserting data', error: err });
+    }
+    return res.status(200).json({ message: 'Data inserted successfully', data: data });
+  });
+});
+
+app.put("/updatemember/:id", async (req, res) => {
+  const { id } = req.params; 
+  const sql = "UPDATE member SET nis = ?, nama = ?, nomortelepon = ?, alamat = ? WHERE id = ?";
+  const values = [
+    req.body.nis,
+    req.body.nama,
+    req.body.nomortelepon,
+    req.body.alamat,
+    id 
+  ];
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error update data', error: err });
+    }
+    return res.status(200).json({ message: 'Data update successfully', data: data });
+  });
+});
+
+app.delete('/member/:id', (req, res) => {
+  const { id } = req.params; 
+  const sql = "DELETE FROM member WHERE id = ?";
+
+  db.query(sql, [id], (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error deleting data', error: err });
+    }
+    return res.status(200).json({ message: 'Data deleted successfully', data: data });
+  });
+});
+
+
 
 
 

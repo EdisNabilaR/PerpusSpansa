@@ -22,7 +22,7 @@ const Sidebar = () => {
   };
 
   const menus = [
-    { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
+    { name: "Dashboard", icon: MdOutlineDashboard },
     {
       name: "Data Perpustakaan",
       icon: IoLibrary,

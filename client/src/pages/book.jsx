@@ -8,8 +8,8 @@ const Book = () => {
     useEffect(() => {
         axios.get('http://localhost:3000/book')
             .then(res => {
-                console.log("API Response:", res.data); // Debugging response
-                setBooks(res.data.data); // Mengakses data dengan benar
+                console.log("API Response:", res.data);
+                setBooks(res.data.data); 
             })
             .catch(err => console.error("API Error:", err));
     }, []);
@@ -28,7 +28,7 @@ const Book = () => {
             <div className='w-75 bg-white rounded p-4 shadow'>
                 <div className="d-flex justify-content-between mb-4">
                     <h2>Data Buku</h2>
-                    <Link to="/formbook" className='btn btn-success'>Add +</Link>
+                    <Link to="/create-book" className='btn btn-success'>Add +</Link>
                 </div>
                 <table className='table table-striped'>
                     <thead>
