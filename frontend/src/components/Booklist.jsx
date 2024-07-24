@@ -1,13 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FaSearch } from 'react-icons/fa';
 
 const Booklist = () => {
   const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   useEffect(() => {
     getBooks();
   }, []);
+
+  useEffect(() => {
+    setFilteredBooks(
+      books.filter(book =>
+        book.name.toLowerCase().includes(search.toLowerCase()) || 
+        book.penerbit.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, books]);
 
   const getBooks = async () => {
     const response = await axios.get('http://localhost:3000/books');
@@ -23,12 +35,24 @@ const Booklist = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Books</h1>
       <h2 className="text-xl mb-6">List Of Books</h2>
-      <Link 
-        to="/books/add" 
-        className="inline-block px-6 py-2 mb-4 text-white bg-blue-500 rounded hover:bg-blue-600"
-      >
-        Add New
-      </Link>
+      <div className="mb-4 flex justify-between items-center">
+        <Link 
+          to="/books/add" 
+          className="inline-block px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+        >
+          Add New
+        </Link>
+        <div className="flex items-center border rounded w-full max-w-xs">
+          <input
+            type="text"
+            placeholder="Search for books..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="px-4 py-2 border-none focus:outline-none w-full"
+          />
+          <FaSearch className="text-gray-200 mx-2" />
+        </div>
+      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white">
           <thead className="bg-gray-800 text-white">
@@ -41,7 +65,7 @@ const Booklist = () => {
             </tr>
           </thead>
           <tbody>
-            {books.map((book, index) => (
+            {filteredBooks.map((book, index) => (
               <tr key={book.id} className="bg-gray-100 border-b">
                 <td className="px-4 py-2">{index + 1}</td>
                 <td className="px-4 py-2">{book.name}</td>

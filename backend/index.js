@@ -7,6 +7,7 @@ import SequelizeStore from "connect-session-sequelize";
 import UserRoute from "./routes/UserRoute.js";
 import BookRoute from "./routes/BookRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
+import MemberRoute from "./routes/MemberRoute.js";
 import db from "./config/Database.js";
 
 dotenv.config();
@@ -47,6 +48,7 @@ app.use(express.json());
 app.use(UserRoute);
 app.use(BookRoute);
 app.use(AuthRoute);
+app.use(MemberRoute);
 
 
 // store.sync();

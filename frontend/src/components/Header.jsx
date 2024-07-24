@@ -19,14 +19,7 @@ const Header = ({ open }) => {
   return (
     <div className={`flex items-center justify-between bg-[#0e0e0e] p-3 duration-500`}>
       <h1 className="text-white text-xl">PERPUSTAKAAN CAHAYA SMPN 1 BPP</h1>
-      <div className="flex items-center bg-gray-800 p-2 rounded-md">
-        <FiSearch size={20} className="text-gray-400 mr-2" />
-        <input
-          type="text"
-          placeholder="Search..."
-          className="bg-gray-800 text-white outline-none"
-        />
-      </div>
+     
       <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-md">Logout</button>
     </div>
   );

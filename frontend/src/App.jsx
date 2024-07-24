@@ -8,6 +8,7 @@ import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
 import AddBook from "./pages/AddBook";
 import EditBook from "./pages/EditBook";
+import Register from "./pages/Register";
 
 
 
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/register" element={<Register />} />
           <Route path="/dash" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/add" element={<AddUser />} />
