@@ -55,7 +55,6 @@ const Sidebar = () => {
       subMenus: [
         { name: "Buku", link: "/books" },
         { name: "Form Buku", link: "/books/add" },
-        { name: "Kategori Buku", link: "/kategori-buku" },
       ],
     },
     user && user.role === "admin" && { name: "Users", link: "/users", icon: TbReportAnalytics, margin: true },

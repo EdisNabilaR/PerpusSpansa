@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
     let Links =[
@@ -15,7 +16,7 @@ const Navbar = () => {
            <div className='md:flex items-center justify-between bg-black py-4 md:px-10 px-7'>
             {/* logo section */}
             <div className='font-bold text-lg cursor-pointer flex items-center gap-1'>
-              <img src="/src/assets/logo.jpg" alt="Logo Perpustakaan" className='h-8 w-8' /> {/* Ganti className sesuai kebutuhan */}
+              <img src={logo} alt="Logo Perpustakaan" className='h-8 w-8' /> {/* Ganti className sesuai kebutuhan */}
               <span className='text-white'>PERPUSTAKAAN CAHAYA SMP NEGERI 1 BALIKPAPAN</span>
             </div>
             {/* Menu icon */}
