@@ -19,13 +19,13 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="mt-8">
+        {/* <section className="mt-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Section Lain</h2>
           <p className="text-gray-600 leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus euismod justo, sit amet molestie
             velit fringilla id. Sed id ipsum volutpat, ultricies enim in, tempor nisi.
           </p>
-        </section>
+        </section> */}
       </div>
     </div>
   );

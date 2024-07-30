@@ -2,7 +2,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "nyamm",
+    "name": "adit",
     "email": "admin@gmail.com",
     "password": "123456",
     "confPassword": "123456",

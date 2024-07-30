@@ -17,10 +17,11 @@ const Header = ({ open }) => {
 
 
   return (
-    <div className={`flex items-center justify-between bg-[#0e0e0e] p-3 duration-500`}>
+    <div className={`flex items-center justify-between p-3 duration-500`} style={{ backgroundColor: "#064cac" }}>
       <h1 className="text-white text-xl">PERPUSTAKAAN CAHAYA SMPN 1 BPP</h1>
-     
-      <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-md">Logout</button>
+      <div className="flex items-center">
+        <button onClick={logout} className="bg-red-200 text-black px-4 py-2 rounded-md">Logout</button>
+      </div>
     </div>
   );
 };

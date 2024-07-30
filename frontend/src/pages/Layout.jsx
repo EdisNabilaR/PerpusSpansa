@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <div className="flex">
       <Sidebar open={open} setOpen={setOpen} />
-      <div className="flex-1 min-h-screen bg-gray-500">
+      <div className="flex-1 min-h-screen bg-[#ffdc64]">
         <Header open={open} />
         <div className="p-4">
           {children}

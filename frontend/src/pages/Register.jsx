@@ -7,6 +7,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
+  const [userClass, setUserClass] = useState("");
+  const [address, setAddress] = useState(""); 
+  const [phoneNumber, setPhoneNumber] = useState(""); 
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -14,11 +17,14 @@ const Register = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/users", {
-        name: name,
-        email: email,
-        password: password,
-        confPassword: confPassword,
-        role: "user", // Set role to "user" automatically
+        name,
+        user_class: userClass,
+        address,
+        phone_number: phoneNumber,
+        email,
+        password,
+        confPassword,
+        role: "user", 
       });
       navigate("/login");
     } catch (error) {
@@ -52,6 +58,42 @@ const Register = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
                 required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Kelas
+              </label>
+              <input
+                type="text"
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                value={userClass}
+                onChange={(e) => setUserClass(e.target.value)}
+                placeholder="Class"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Alamat
+              </label>
+              <input
+                type="text"
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Address"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Nomor Telepon
+              </label>
+              <input
+                type="text"
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Phone Number"
               />
             </div>
             <div className="mb-4">

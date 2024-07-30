@@ -9,6 +9,10 @@ import EditUser from "./pages/EditUser";
 import AddBook from "./pages/AddBook";
 import EditBook from "./pages/EditBook";
 import Register from "./pages/Register";
+import Category from "./pages/Category";
+import Profile from "./components/Profile";
+import Members from "./pages/Member";
+import EditMember from "./pages/EditMember";
 
 
 
@@ -20,14 +24,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dash" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/add" element={<AddUser />} />
           <Route path="/users/edit/:id" element={<EditUser />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/category-book" element={<Category />} />
           <Route path="/books/add" element={<AddBook />} />
           <Route path="/books/edit/:id" element={<EditBook />} />
+          <Route path="/members" element={<Members />} />
+          <Route path="/members/edit/:id" element={<EditMember />} />
         </Routes>
       </BrowserRouter>
     </div>

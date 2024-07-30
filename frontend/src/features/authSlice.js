@@ -7,7 +7,7 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: ""
-}
+};
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI) => {
     try {
@@ -17,12 +17,12 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI
         });
         return response.data;
     } catch (error) {
-        if(error.response){
+        if (error.response) {
             const message = error.response.data.msg;
             return thunkAPI.rejectWithValue(message);
         }
     }
-})
+});
 
 export const RegisterUser = createAsyncThunk("user/RegisterUser", async(user, thunkAPI) => {
     try {
@@ -35,28 +35,45 @@ export const RegisterUser = createAsyncThunk("user/RegisterUser", async(user, th
         });
         return response.data;
     } catch (error) {
-        if(error.response){
+        if (error.response) {
             const message = error.response.data.msg;
             return thunkAPI.rejectWithValue(message);
         }
     }
-})
+});
 
 export const getMe = createAsyncThunk("user/getMe", async(_, thunkAPI) => {
     try {
         const response = await axios.get('http://localhost:3000/me');
         return response.data;
     } catch (error) {
-        if(error.response){
+        if (error.response) {
             const message = error.response.data.msg;
             return thunkAPI.rejectWithValue(message);
         }
     }
-})
+});
 
 export const LogOut = createAsyncThunk("user/LogOut", async() => {
-     await axios.delete('http://localhost:3000/logout');
-})
+    await axios.delete('http://localhost:3000/logout');
+});
+
+export const updateProfile = createAsyncThunk("user/updateProfile", async(user, thunkAPI) => {
+    try {
+        const response = await axios.put('http://localhost:3000/profile', {
+            name: user.name,
+            fullName: user.fullName,
+            kelas: user.kelas,
+            alamat: user.alamat
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            const message = error.response.data.msg;
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+});
 
 export const authSlice = createSlice({
     name: "auth",
@@ -64,7 +81,7 @@ export const authSlice = createSlice({
     reducers: {
         reset: (state) => initialState
     },
-    extraReducers:(builder) => {
+    extraReducers: (builder) => {
         builder.addCase(LoginUser.pending, (state) => {
             state.isLoading = true;
         });
@@ -77,7 +94,7 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
-        })
+        });
 
         builder.addCase(RegisterUser.pending, (state) => {
             state.isLoading = true;
@@ -91,7 +108,7 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
-        })
+        });
 
         builder.addCase(getMe.pending, (state) => {
             state.isLoading = true;
@@ -105,7 +122,21 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
-        })
+        });
+
+        builder.addCase(updateProfile.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(updateProfile.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.user = action.payload;
+        });
+        builder.addCase(updateProfile.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+        });
     }
 });
 

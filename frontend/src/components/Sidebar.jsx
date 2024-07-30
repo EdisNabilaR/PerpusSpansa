@@ -5,9 +5,8 @@ import { LogOut, reset } from "../features/authSlice";
 import { GrMenu } from "react-icons/gr";
 import { IoLibrary } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
-import { FiMessageSquare, FiFolder } from "react-icons/fi";
-import { TbReportAnalytics } from "react-icons/tb";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { GiBookAura } from "react-icons/gi";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -34,36 +33,32 @@ const Sidebar = () => {
   };
 
   const menus = [
-    { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
-    {
+    { name: "Dashboard", link: "/dash", icon: MdOutlineDashboard },
+    user && user.role === "admin" && {
       name: "Data Perpustakaan",
       icon: IoLibrary,
       hasDropdown: true,
       dropdownKey: "library",
       subMenus: [
-        { name: "Data Anggota", link: "/data-anggota" },
-        { name: "Data Penerbit", link: "/data-penerbit" },
-        { name: "Data Admin", link: "/data-admin" },
-        { name: "Data Peminjaman", link: "/data-peminjaman" },
+        { name: "Data Anggota", link: "/members" },
       ],
     },
     {
       name: "Data Buku",
-      icon: FiMessageSquare,
+      icon: GiBookAura,
       hasDropdown: true,
       dropdownKey: "books",
       subMenus: [
         { name: "Buku", link: "/books" },
-        { name: "Form Buku", link: "/books/add" },
-        { name: "Kategori Buku", link: "/kategori-buku" },
+        user && user.role === "admin" && { name: "Form Buku", link: "/books/add" },
+        { name: "Kategori Buku", link: "/category-book" },
       ],
     },
-    user && user.role === "admin" && { name: "Users", link: "/users", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/files", icon: FiFolder },
-  ].filter(Boolean); // Filter out any falsey values
+    user && user.role === "admin" && { name: "Users", link: "/users", icon: FaUsers, margin: true },
+  ].filter(Boolean);
 
   return (
-    <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}>
+    <div className={`min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4 bg-[#064cac]`}>
       <div className="py-3 flex justify-end">
         <GrMenu size={26} className="cursor-pointer" onClick={() => setOpen(!open)} />
       </div>
@@ -80,7 +75,7 @@ const Sidebar = () => {
                   {menu.name}
                 </span>
                 {menu.hasDropdown && (
-                  React.createElement(dropdowns[menu.dropdownKey] ? FaChevronDown : FaChevronRight, { size: "16" })
+                  <span className={`${!open && "hidden"}`}></span>
                 )}
               </div>
             </Link>
@@ -99,7 +94,7 @@ const Sidebar = () => {
       <div className="flex justify-center mt-4 mb-4">
         <button
           onClick={logout}
-          className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
+          className="bg-red-200 text-black px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
         >
           Logout
         </button>
