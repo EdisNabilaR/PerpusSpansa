@@ -34,9 +34,9 @@ const Booklist = () => {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Books</h1>
-      <h2 className="text-xl mb-6">List Of Books</h2>
+    <div className="p-4 bg-gray-200 min-h-screen bg-[#ffdc64]">
+      <h1 className="text-2xl font-bold mb-4 text-gray-800">Books</h1>
+      <h2 className="text-xl mb-6 text-gray-800">List Of Books</h2>
       <div className="mb-4 flex justify-between items-center">
         <Link 
           to="/books/add" 

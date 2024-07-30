@@ -40,10 +40,10 @@ const FormAddBook = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-white mb-4">Books</h1>
-      <h2 className="text-xl text-gray-300 mb-6">Add New Book</h2>
-      <div className="bg-gray-900 p-6 rounded-lg">
+    <div className="p-6 bg-[#ffdc64] rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold text-black mb-4">Books</h1>
+      <h2 className="text-xl text-black-300 mb-6">Add New Book</h2>
+      <div className="bg-gray-500 p-6 rounded-lg">
         <p className="text-red-500 text-center mb-4">{msg}</p>
         <form onSubmit={saveBook}>
           <p className="text-center">{msg}</p>
