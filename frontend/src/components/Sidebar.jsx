@@ -7,7 +7,7 @@ import { IoLibrary } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FiMessageSquare, FiFolder } from "react-icons/fi";
 import { TbReportAnalytics } from "react-icons/tb";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
+import { FaChevronRight, FaChevronDown, FaPersonBooth, FaUser } from "react-icons/fa";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,8 @@ const Sidebar = () => {
     books: false,
   });
 
+  const [bgColor, setBgColor] = useState("#0e0e0e");
+
   const toggleDropdown = (menu) => {
     setDropdowns((prevState) => ({
       ...prevState,
@@ -33,8 +35,13 @@ const Sidebar = () => {
     }));
   };
 
+  const handleBgColorChange = (color) => {
+    setBgColor(color);
+  };
+
   const menus = [
     { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
+    {name: "User", link: "/profile", icon: FaUser },
     {
       name: "Data Perpustakaan",
       icon: IoLibrary,
@@ -62,7 +69,7 @@ const Sidebar = () => {
   ].filter(Boolean); // Filter out any falsey values
 
   return (
-    <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}>
+    <div className={`min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`} style={{ backgroundColor: bgColor }}>
       <div className="py-3 flex justify-end">
         <GrMenu size={26} className="cursor-pointer" onClick={() => setOpen(!open)} />
       </div>
@@ -94,6 +101,15 @@ const Sidebar = () => {
             )}
           </div>
         ))}
+      </div>
+      <div className="mt-4">
+        <h3 className={`${!open && "hidden"} text-gray-400 mb-2`}>Change Background</h3>
+        <div className="flex gap-2 justify-center">
+          <button className="w-6 h-6 rounded-full bg-[#0e0e0e]" onClick={() => handleBgColorChange("#0e0e0e")}></button>
+          <button className="w-6 h-6 rounded-full bg-[#1e3a8a]" onClick={() => handleBgColorChange("#1e3a8a")}></button>
+          <button className="w-6 h-6 rounded-full bg-[#047857]" onClick={() => handleBgColorChange("#047857")}></button>
+          <button className="w-6 h-6 rounded-full bg-[#b91c1c]" onClick={() => handleBgColorChange("#b91c1c")}></button>
+        </div>
       </div>
       <div className="flex justify-center mt-4 mb-4">
         <button

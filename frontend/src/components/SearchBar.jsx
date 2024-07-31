@@ -12,13 +12,13 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="flex items-center w-full">
+    <div className="flex items-center w-full mx-auto p-4 bg-white shadow-lg rounded-md max-w-screen-lg px-4 md:px-6 lg:px-8">
       <input
         type="text"
         value={query}
         onChange={handleInputChange}
         placeholder="Search for books, authors, subjects..."
-        className="flex-1 p-2 mr-2 border border-gray-300 rounded-md"
+        className="flex-1 p-2 mr-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
       />
       <button
         onClick={handleSearch}
