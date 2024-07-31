@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+<<<<<<< HEAD
 const FormEditBook = () => {
   const [name, setName] = useState("");
   const [pengarang, setPengarang] = useState("");
@@ -32,19 +33,43 @@ const FormEditBook = () => {
         setBahasa(response.data.bahasa);
         setLink(response.data.link);
       } catch (error) {
+=======
+
+const FormEditBook = () => {
+  const [name, setName] = useState("");
+  const [penerbit, setPenerbit] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+  const {id} = useParams();
+
+  useEffect(()=>{
+    const getBookById = async () =>{
+      try {
+        const response = await axios.get(`http://localhost:3000/books/${id}`);
+        setName(response.data.name);
+        setPenerbit(response.data.penerbit);
+      } catch (error){
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
         if (error.response) {
           setMsg(error.response.data.msg);
         }
       }
+<<<<<<< HEAD
     };
     getBookById();
   }, [id]);
+=======
+    }
+    getBookById();
+  },[id]);
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
 
   const updateBook = async (e) => {
     e.preventDefault();
     try {
       await axios.patch(`http://localhost:3000/books/${id}`, {
         name: name,
+<<<<<<< HEAD
         pengarang: pengarang,
         penerbit: penerbit,
         isbn: isbn,
@@ -54,6 +79,9 @@ const FormEditBook = () => {
         nopengenal: nopengenal,
         bahasa: bahasa,
         link: link
+=======
+        penerbit: penerbit
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
       });
       navigate("/books");
     } catch (error) {
@@ -81,6 +109,7 @@ const FormEditBook = () => {
             />
           </div>
           <div className="mb-4">
+<<<<<<< HEAD
             <label className="block text-gray-300 text-sm font-bold mb-2">Pengarang</label>
             <input
               type="text"
@@ -91,6 +120,8 @@ const FormEditBook = () => {
             />
           </div>
           <div className="mb-4">
+=======
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
             <label className="block text-gray-300 text-sm font-bold mb-2">Penerbit</label>
             <input
               type="text"
@@ -99,6 +130,7 @@ const FormEditBook = () => {
               onChange={(e) => setPenerbit(e.target.value)}
               placeholder="Penerbit"
             />
+<<<<<<< HEAD
           </div>
           <div className="mb-4">
             <label className="block text-gray-300 text-sm font-bold mb-2">ISBN</label>
@@ -170,6 +202,9 @@ const FormEditBook = () => {
               placeholder="Link"
             />
           </div>
+=======
+          </div>      
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
           <div className="mb-4">
             <button type="submit" className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
               Update
@@ -181,4 +216,8 @@ const FormEditBook = () => {
   );
 };
 
+<<<<<<< HEAD
 export default FormEditBook;
+=======
+export default FormEditBook;
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063

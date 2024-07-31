@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React from "react";
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
 import { FiSearch } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +19,7 @@ const Header = ({ open }) => {
     navigate("/login");
   };
 
+<<<<<<< HEAD
   const [bgColor, setBgColor] = useState("#0e0e0e");
 
   const handleBgColorChange = (color) => {
@@ -33,8 +38,27 @@ const Header = ({ open }) => {
         </div>
         <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-md">Logout</button>
       </div>
+=======
+
+  return (
+    <div className={`flex items-center justify-between bg-[#0e0e0e] p-3 duration-500`}>
+      <h1 className="text-white text-xl">PERPUSTAKAAN CAHAYA SMPN 1 BPP</h1>
+      <div className="flex items-center bg-gray-800 p-2 rounded-md">
+        <FiSearch size={20} className="text-gray-400 mr-2" />
+        <input
+          type="text"
+          placeholder="Search..."
+          className="bg-gray-800 text-white outline-none"
+        />
+      </div>
+      <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-md">Logout</button>
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default Header;
+=======
+export default Header;
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063

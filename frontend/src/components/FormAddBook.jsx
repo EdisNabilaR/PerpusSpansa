@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const FormAddBook = () => {
   const [name, setName] = useState("");
+<<<<<<< HEAD
   const [pengarang, setPengarang] = useState("");
   const [penerbit, setPenerbit] = useState("");
   const [isbn, setIsbn] = useState("");
@@ -13,6 +14,9 @@ const FormAddBook = () => {
   const [nopengenal, setNopengenal] = useState("");
   const [bahasa, setBahasa] = useState("");
   const [link, setLink] = useState("");
+=======
+  const [penerbit, setPenerbit] = useState("");
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -21,6 +25,7 @@ const FormAddBook = () => {
     try {
       await axios.post("http://localhost:3000/books", {
         name: name,
+<<<<<<< HEAD
         pengarang: pengarang,
         penerbit: penerbit,
         isbn: isbn,
@@ -30,6 +35,9 @@ const FormAddBook = () => {
         nopengenal: nopengenal,
         bahasa: bahasa,
         link: link
+=======
+        penerbit: penerbit
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
       });
       navigate("/books");
     } catch (error) {
@@ -58,6 +66,7 @@ const FormAddBook = () => {
             />
           </div>
           <div className="mb-4">
+<<<<<<< HEAD
             <label className="block text-gray-300 text-sm font-bold mb-2">Pengarang</label>
             <input
               type="text"
@@ -68,6 +77,8 @@ const FormAddBook = () => {
             />
           </div>
           <div className="mb-4">
+=======
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
             <label className="block text-gray-300 text-sm font-bold mb-2">Penerbit</label>
             <input
               type="text"
@@ -76,6 +87,7 @@ const FormAddBook = () => {
               onChange={(e) => setPenerbit(e.target.value)}
               placeholder="Penerbit"
             />
+<<<<<<< HEAD
           </div>
           <div className="mb-4">
             <label className="block text-gray-300 text-sm font-bold mb-2">ISBN</label>
@@ -159,6 +171,9 @@ const FormAddBook = () => {
               </div>
             )}
           </div>
+=======
+          </div>      
+>>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
           <div className="mb-4">
             <button type="submit" className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
               Save
