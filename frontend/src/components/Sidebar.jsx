@@ -5,7 +5,7 @@ import { LogOut, reset } from "../features/authSlice";
 import { GrMenu } from "react-icons/gr";
 import { IoLibrary } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
-import { FaUsers } from "react-icons/fa";
+import { FaUser, FaUsers } from "react-icons/fa";
 import { GiBookAura } from "react-icons/gi";
 
 const Sidebar = () => {
@@ -55,6 +55,7 @@ const Sidebar = () => {
       ],
     },
     user && user.role === "admin" && { name: "Users", link: "/users", icon: FaUsers, margin: true },
+    { name: "Profile", link: "/profile", icon: FaUser },
   ].filter(Boolean);
 
   return (

@@ -1,22 +1,21 @@
 import User from "../models/UserModel.js";
 
-// Mendapatkan semua anggota
+
 export const getMembers = async (req, res) => {
   try {
-    const totalMembers = await User.count();
-    const members = await User.findAll({
-      attributes: ['uuid', 'name', 'user_class', 'address', 'phone_number']
-    });
-    res.status(200).json({
-      total: totalMembers,
-      members
-    });
+      const user = await User.findOne({
+          where: {
+              id: req.userId
+          },
+          attributes: ['uuid', 'name', 'user_class', 'address', 'phone_number', 'email', 'role'] 
+      });
+      if (!user) return res.status(404).json({ msg: "User tidak ditemukan" });
+      res.json(user);
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+      res.status(500).json({ msg: error.message });
   }
 };
 
-// Mendapatkan anggota berdasarkan ID
 export const getMemberById = async (req, res) => {
   try {
     const member = await User.findOne({

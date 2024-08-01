@@ -20,7 +20,7 @@ export const verifyUser = async (req, res, next) => {
     next();
 };
 
-export const adminOnly = async (req, res, next) =>{
+export const adminOnly = async (req, res, next) => {
     const user = await User.findOne({
         where: {
             uuid: req.session.userId

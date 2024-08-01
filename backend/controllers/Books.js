@@ -31,6 +31,24 @@ export const getBooks = async (req, res) => {
     }
 }
 
+export const getBooksByCategory = async (req, res) => {
+    try {
+        const category = req.params.category.toLowerCase();
+        const books = await Books.findAll({
+            attributes: ['uuid', 'name', 'pengarang', 'penerbit', 'isbn', 'kategori', 'sumber', 'noinduk', 'nopengenal', 'bahasa', 'link'],
+            where: {
+                kategori: category
+            },
+            include: [{
+                model: User,
+                attributes: ['name', 'email']
+            }]
+        });
+        res.status(200).json({ books });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
 
 export const getBookById = async (req, res) => {
     try {

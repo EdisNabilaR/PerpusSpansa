@@ -10,9 +10,13 @@ import AddBook from "./pages/AddBook";
 import EditBook from "./pages/EditBook";
 import Register from "./pages/Register";
 import Category from "./pages/Category";
-import Profile from "./components/Profile";
 import Members from "./pages/Member";
 import EditMember from "./pages/EditMember";
+import Profilepg from "./pages/ProfilePg";
+import InformationPage from "./components/InformationPage";
+import BookPage from "./components/BookPage";
+import EditProfile from "./pages/EditProfile";
+import CategoryPage from "./pages/CategoryPage";
 
 
 
@@ -24,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dash" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
@@ -36,6 +39,11 @@ function App() {
           <Route path="/books/edit/:id" element={<EditBook />} />
           <Route path="/members" element={<Members />} />
           <Route path="/members/edit/:id" element={<EditMember />} />
+          <Route path="/profile" element={<Profilepg />} />
+          <Route path="/profile/edit/:id" element={<EditProfile />} />
+          <Route path="/information" element={<InformationPage />} />
+          <Route path="/book" element={<BookPage />} />
+          <Route path="/kategori/:category" element={<CategoryPage />} />
         </Routes>
       </BrowserRouter>
     </div>
