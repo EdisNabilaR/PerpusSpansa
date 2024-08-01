@@ -7,11 +7,7 @@ import { IoLibrary } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FiMessageSquare, FiFolder } from "react-icons/fi";
 import { TbReportAnalytics } from "react-icons/tb";
-<<<<<<< HEAD
 import { FaChevronRight, FaChevronDown, FaPersonBooth, FaUser } from "react-icons/fa";
-=======
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -30,11 +26,8 @@ const Sidebar = () => {
     books: false,
   });
 
-<<<<<<< HEAD
   const [bgColor, setBgColor] = useState("#0e0e0e");
 
-=======
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
   const toggleDropdown = (menu) => {
     setDropdowns((prevState) => ({
       ...prevState,
@@ -42,7 +35,6 @@ const Sidebar = () => {
     }));
   };
 
-<<<<<<< HEAD
   const handleBgColorChange = (color) => {
     setBgColor(color);
   };
@@ -50,10 +42,6 @@ const Sidebar = () => {
   const menus = [
     { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
     {name: "User", link: "/profile", icon: FaUser },
-=======
-  const menus = [
-    { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
     {
       name: "Data Perpustakaan",
       icon: IoLibrary,
@@ -74,10 +62,6 @@ const Sidebar = () => {
       subMenus: [
         { name: "Buku", link: "/books" },
         { name: "Form Buku", link: "/books/add" },
-<<<<<<< HEAD
-=======
-        { name: "Kategori Buku", link: "/kategori-buku" },
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
       ],
     },
     user && user.role === "admin" && { name: "Users", link: "/users", icon: TbReportAnalytics, margin: true },
@@ -85,11 +69,7 @@ const Sidebar = () => {
   ].filter(Boolean); // Filter out any falsey values
 
   return (
-<<<<<<< HEAD
     <div className={`min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`} style={{ backgroundColor: bgColor }}>
-=======
-    <div className={`bg-[#0e0e0e] min-h-screen ${open ? "w-72" : "w-16"} duration-500 text-gray-100 px-4`}>
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
       <div className="py-3 flex justify-end">
         <GrMenu size={26} className="cursor-pointer" onClick={() => setOpen(!open)} />
       </div>
@@ -122,7 +102,6 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-<<<<<<< HEAD
       <div className="mt-4">
         <h3 className={`${!open && "hidden"} text-gray-400 mb-2`}>Change Background</h3>
         <div className="flex gap-2 justify-center">
@@ -132,8 +111,6 @@ const Sidebar = () => {
           <button className="w-6 h-6 rounded-full bg-[#b91c1c]" onClick={() => handleBgColorChange("#b91c1c")}></button>
         </div>
       </div>
-=======
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
       <div className="flex justify-center mt-4 mb-4">
         <button
           onClick={logout}
@@ -146,8 +123,4 @@ const Sidebar = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Sidebar;
-=======
-export default Sidebar;
->>>>>>> 14aa7bff8e9b9607286d861408372d44f6934063
