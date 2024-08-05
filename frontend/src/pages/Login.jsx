@@ -32,9 +32,9 @@ const Login = () => {
     <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0">
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
         <div
-          className="hidden md:block lg:w-1/2 bg-cover bg-blue-700"
+          className="hidden md:block lg:w-1/2 bg-cover bg-center"
           style={{
-            backgroundImage: `url(https://www.tailwindtap.com/assets/components/form/userlogin/login_tailwindtap.jpg)`,
+            backgroundImage: `url('src/assets/perpuscahaya.jpg')`,
           }}
         ></div>
         <div className="w-full p-8 lg:w-1/2">
@@ -66,12 +66,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <a
-                href="#"
-                className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2"
-              >
-                Forget Password?
-              </a>
+              
             </div>
             <div className="mt-8">
               <button
